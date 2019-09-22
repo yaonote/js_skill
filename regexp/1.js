@@ -46,6 +46,12 @@ const pwdVerify = (pwd) => {
 }
 
 
+// const str = '/web_content/test/index.html';
+// const handlePathName = (pathname) => {
+//     return pathname.replace(/\/(?=[^/]*$).*$/g,"/")
+// }
+// console.log(handlePathName(str))
+
 
 
 
