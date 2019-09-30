@@ -6,4 +6,6 @@ const foo = _ => {
 const bar = foo();
 bar.then(res => {
     console.log('res =>',res)
+}).then(res => {
+    console.log('res =>',res)
 })
