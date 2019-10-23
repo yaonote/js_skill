@@ -21,4 +21,5 @@ eventBus.on('test', () => {
     console.log('on test')
 })
 
+
 eventBus.event('test')
