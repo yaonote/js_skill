@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;padding: 0;
+        }
+        .process-wrap{
+            margin: 100px auto;
+            position: relative;
+            height: 30px;
+            width: 600px;
+            background: #ddd;
+        }
+        .dot{
+            position: absolute;
+            top: 50%;
+            margin-top: -20px;
+            width: 20px;
+            height: 40px;
+            cursor: pointer;
+            background: red;
+        }
+       
+    </style>
+</head>
+<body id="body">
+    <div id="test">
+        <div class="process-wrap">
+            <div class="dot"></div>
+        </div>
+    </div>
+    <script>
+        
+        var dot = document.querySelector('.dot');
+        var process = document.querySelector('.process-wrap');
+        
+        dot.onmousedown = function(e) {
+            var event = e || window.event;
+            var initialDistanceX = event.clientX - dot.offsetLeft; // 滚动条整体距离左侧 距离body  的距离
+            
+            document.onmousemove = function(event) {
+                var event = event || window.event;
+                // 距离父元素的相对位置
+                var distanceX = event.clientX - initialDistanceX;
+                if (distanceX < 0) { //左边界
+                    distanceX = 0;
+                }else if(distanceX >= process.offsetWidth - dot.offsetWidth){ // 又边界
+                    distanceX = process.offsetWidth - dot.offsetWidth;
+                }
+                dot.style.left = distanceX + 'px';
+            }
+            
+            document.onmouseup = function () {
+                document.onmousemove = null;
+                document.onmouseup = null;
+            }
+        }
+
+       
+    
+    </script>
+</body>
+</html>
