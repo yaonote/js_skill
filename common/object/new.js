@@ -7,31 +7,15 @@
  * 
  */
 
- function newOperator(_constructor) {
-    newOperator.target = _constructor;
-    let newObj = Object.create(_constructor.prototype);
-    let argsArr = [].slice.call(arguments,1);
-    let result = _constructor.apply(newObj, argsArr);
-    if(typeof result === 'object'){
-        return result;
-    }
-    return newObj;
- }
-
-function _new(func) {
+function New(func) {
     let res = {};
-    res.__proto__ = func.prototype; // 为了判断类型
-    const result = func.apply(res,[].slice.call(arguments,1)) // 这一步就是在往中间变量上添加属性和方法
-    if((typeof result === 'object' || typeof ret === 'function') && ret !== null){
-        console.log('yao-coding result =>',result)
-        return result
+    if(func.prototype !== null){
+        res.__proto__ = func.prototype;
     }
-    return res
+    let ret = func.apply(res,Array.prototype.slice.call(arguments,1))
+    if(['object','function'].includes(typeof ret) && ret !== null){
+        return ret;
+    }
+    return res;
 }
-function Person(name,age) {
-    this.name = name;
-    this.age = age;
-}
-var p1 = _new(Person,'tom',20)
 
-console.log('yao-coding  p1=>',p1)
