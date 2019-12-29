@@ -8,3 +8,15 @@
  * 原型链继承
  *      
  */
+
+ function Test() {
+     this.name = 'test';
+ }
+Test.prototype.test1 = function (params) {
+     console.log('yao-coding tets =>')
+ }
+ Test.foo = function (params) {
+     console.log('yao-coding tets =>')
+ }
+ const test = new Test()
+ test.test1()
