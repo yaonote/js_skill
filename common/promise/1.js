@@ -47,6 +47,7 @@ class _Promise{
                 })
             }
         })
+        return promise2;
     }
 }
 
@@ -79,3 +80,16 @@ function resolvePromise(promise2,x,resolve,reject) {
     }
 
 }
+
+
+const foo = _ => {
+    return new Promise(function(resolve){
+        resolve('eee')
+    })
+}
+const bar = foo();
+bar.then(res => {
+    console.log('res =>',res)
+}).then(res => {
+    console.log('res =>',res)
+})

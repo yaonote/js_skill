@@ -11,3 +11,5 @@ function createAnother(original) {
     }
     return clone;
 }
+
+// 不使用构造函数去继承
