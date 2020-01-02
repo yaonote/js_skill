@@ -7,6 +7,19 @@
     <title>vue</title>
 </head>
 <body>
-    
+    <div id="app">
+        <div>{{a.a}}</div>
+        <div>{{b}}</div>
+    </div>
+    <script src="./core/index.js"></script>
+    <script>
+        let vue = new Vue1({
+            el: "#app",
+            data: {
+                a: {a: '是a'},
+                b: '是b'
+            }
+        })
+    </script>
 </body>
 </html>

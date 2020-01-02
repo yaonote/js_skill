@@ -20,34 +20,48 @@
 // console.log(obj._value)
 
 
-this.a = 20;
-var test = {
-    a: 40,
-    init: () => {
-        console.log('init ->',this.a);
-        function go() {
-            // this.a = 60;
-            console.log('go ->',this.a)
-        }
-        go.prototype.a = 50;
-        return go;
-    }
-}
-var foo = {
-    a: 40,
-    init: function () {
-        console.log('init ->',this.a);
-        function go() {
-            // this.a = 60;
-            console.log('go ->',this.a)
-        }
-        go.prototype.a = 50;
-        return go;
-    }
-}
+// this.a = 20;
+// var test = {
+//     a: 40,
+//     init: () => {
+//         console.log('init ->',this.a);
+//         function go() {
+//             // this.a = 60;
+//             console.log('go ->',this.a)
+//         }
+//         go.prototype.a = 50;
+//         return go;
+//     }
+// }
+// var foo = {
+//     a: 40,
+//     init: function () {
+//         console.log('init ->',this.a);
+//         function go() {
+//             // this.a = 60;
+//             console.log('go ->',this.a)
+//         }
+//         go.prototype.a = 50;
+//         return go;
+//     }
+// }
 // var p = test.init();
 // p();
 // new (test.init())();
 
-test.init()
+// test.init()
 // foo.init()
+
+
+const omit = (obj,key) => Object.keys(obj).reduce((acc, curr) => curr === key ? acc : {...acc, [curr]: obj[curr]}, {})
+
+const obj = {
+    a: ';',
+    b: 'ss',
+    c: [{
+        "aaa":'aaa'
+    }]
+}
+const res = omit(obj,'a')
+
+console.log('res -> ',res)
