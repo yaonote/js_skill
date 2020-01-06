@@ -1,7 +1,6 @@
 class EventEmitter {
     constructor() {
-        this._event = this._event || new Map();
-        this._maxListeners = this._maxListeners || 10;
+        this._event = new Map();
     }
     addListener(eventName, cb) {
         let handle = this._event.get(eventName);
