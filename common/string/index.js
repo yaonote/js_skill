@@ -42,8 +42,8 @@ console.log(res);
  * 
  *  函数的参数 第一个是匹配到的整体 
  *  有子语句的话 第二个以后的参数对应 子语句
- *  倒数第一个是原字符串
  *  倒数第二个是匹配到的位置
+ *  倒数第一个是原字符串
  */
 
 const toUpper = (str) => str.replace(/\_(\w)/g,(_,needUpper) => needUpper.toUpperCase()) 

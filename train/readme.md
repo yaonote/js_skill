@@ -32,6 +32,7 @@
 + reduce √
 + flatten √
 + sort 
++ unrepeat(去重)
 
 ### 异步
  + Promise
@@ -48,4 +49,9 @@
 + 快排
 + 希尔
 
-### 算法
+### 框架
+vue
+vue-router
+vuex
+redux
+koa2
