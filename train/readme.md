@@ -31,9 +31,7 @@
 + filter √
 + reduce √
 + flatten √
-+ sort 
-+ unrepeat(去重)
-
++ unique
 ### 异步
  + Promise
 

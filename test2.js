@@ -65,3 +65,12 @@ const obj = {
 const res = omit(obj,'a')
 
 console.log('res -> ',res)
+
+let str = '';
+
+const test = 'PENFING';
+
+/**
+ * 
+ * 
+ */
