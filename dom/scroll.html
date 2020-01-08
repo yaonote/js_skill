@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>scroll</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        #wrap{
+            height: 100vh;
+            background-color: aquamarine;
+            overflow-y: scroll;
+        }
+        li{
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <ul>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+        </ul>
+    </div>
+    <script>
+        // 文档内容实际高度  scrollHeight
+        // 滚动条滚动距离   scrollTop 
+        // 窗口可视范围高度 clientHeight
+        
+        //  初始状态的时候 scrollTop = 0 
+        //  到底部的状态是 可视区的高度+滚动条的高度 = 文档内容的高度
+
+        var father = document.querySelector('#wrap');
+        father.addEventListener('scroll',function(e){
+            console.log('scroll =>',e)
+            console.log('height =>',father.style)
+        },false)
+    
+    </script>
+</body>
+</html>

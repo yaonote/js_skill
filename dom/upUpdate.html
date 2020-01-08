@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>上拉刷新</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    #wrap{
+        width: 100%;
+        background-color: pink;
+    }
+    .text{
+        text-align: center;
+    }
+</style>
+<body>
+    <main>
+        <div class="text"></div>
+        <div id="wrap">
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+            </ul>
+        </div>
+    </main>
+    <script>
+        (function(window) {
+            var text = document.querySelector('.text');
+            var wrap = document.querySelector('#wrap');
+            var startPos = 0;
+            var reset = false;
+            wrap.addEventListener('touchstart',function(e){
+                startPos = e.touches[0].pageY;
+                wrap.style.position = 'relative';
+                wrap.style.transition = 'transform 0s';
+            },false)
+            wrap.addEventListener('touchmove',function(e) {
+                var currPos = e.touches[0].pageY;
+                var gapHeight = currPos - startPos;
+                if(gapHeight > 0 && gapHeight < 60){
+                    text.style.display = 'block';
+                    text.innerHTML = '下拉刷新';
+                    wrap.style.transform = `translateY(${gapHeight}px)`;
+                    if(gapHeight > 55){
+                        text.innerHTML = '释放刷新';
+                        reset = true;
+                    }
+                }
+            },false)
+            wrap.addEventListener('touchend',function(e) {
+                text.style.display = 'none';
+                wrap.style.transform = `translateY(0px)`;
+                wrap.style.transition = `transform 0.5s ease`;
+                setTimeout(() => {
+                    if(reset){
+                        console.log('reset');
+                        reset = false;
+                    }
+                },505)
+            },false)
+        })(window)        
+    </script>
+</body>
+</html>
