@@ -7,7 +7,7 @@
 + bind √
 + deep_clone √
 + Event (event bus) √
-+ JSON.parse
++ JSON.parse√
 + JSON.stringify
 
 
@@ -21,35 +21,33 @@
 
 #### 字符串
 + 解析 URL params 对象 √
-+ 模板引擎
 + 转化为驼峰 √
 + 千位分隔符 √
 + 隐藏电话号码 √
   
 #### 数组
-+ map √
-+ filter √
-+ reduce √
-+ flatten √
-+ unique
+    + map √
+    + filter √
+    + reduce √
+    + flatten √
+    + unique √
 ### 异步
  + Promise
-
+ + lazyMan
 ### 函数
-+ 防抖 debounce √
-+ 节流 throttle √
-+ 柯里化
-
+    + 防抖 debounce √
+    + 节流 throttle √
+    + 柯里化 √
 ### 排序
-+ 冒泡
-+ 选择
-+ 插入
-+ 快排
-+ 希尔
+    + 冒泡 √
+    + 选择 √
+    + 插入 √
+    + 快排 √
+    + 希尔
 
 ### 框架
-vue
-vue-router
-vuex
-redux
-koa2
+    vue  
+    vue-router  
+    vuex  
+    koa2  
+    express
