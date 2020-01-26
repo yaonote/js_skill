@@ -9,8 +9,6 @@
 + Event (event bus) √
 + JSON.parse√
 + JSON.stringify
-
-
 ### 继承
 + 原型链继承
 + 经典继承
@@ -18,13 +16,11 @@
 + 原型式继承
 + 寄生式继承
 + 寄生组合式继承
-
 #### 字符串
 + 解析 URL params 对象 √
 + 转化为驼峰 √
 + 千位分隔符 √
 + 隐藏电话号码 √
-  
 #### 数组
     + map √
     + filter √
@@ -49,5 +45,9 @@
     vue  
     vue-router  
     vuex  
-    koa2  
+    koa2  洋葱模型
     express
+
+### node
+    fs
+    http
