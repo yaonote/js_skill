@@ -1,3 +1,7 @@
+/**
+ * 描述： 创建一个新对象 使用现有的对象来提供 __proto__
+ */
+
 Object.prototype.myCreate = function(proto) {
     function F() {};
     F.prototype = proto;
@@ -6,8 +10,8 @@ Object.prototype.myCreate = function(proto) {
  }
 
 
-function object(o) {
+function object(proto) {
     function F(){};
-    F.prototype = o;
+    F.prototype = proto;
     return new F();
 }
