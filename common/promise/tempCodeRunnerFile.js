@@ -1,5 +1,4 @@
 function Promise(constructor) {
-    console.log(constructor)
     let self = this;
     self.status = 'pending';
     self.value = undefined;

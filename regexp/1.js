@@ -9,7 +9,7 @@ const matchEleId = (str) => {
 // const str1 = '{{test}}{{test2}}'
 // const reg2 = /\{\{(.*?)\}\}/g;
 // console.log(str1.match(reg2)[0])
-// console.log('yao-coding reg =>',RegExp.$1)
+// console.log(' reg =>',RegExp.$1)
 // 数字的千位分割符表示法 
 
 /**
@@ -30,7 +30,7 @@ const num2kb = (num) => {
     return num.replace(reg,',') 
 }
 // const str = 123456789;
-// console.log('yao-coding num2kb =>',num2kb(str))
+// console.log(' num2kb =>',num2kb(str))
 
 /**
  * 6-12 位的密码 至少包括两种字符

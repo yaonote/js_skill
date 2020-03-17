@@ -7,15 +7,16 @@
  * 
  */
 
- function newOperator(_constructor) {
-    newOperator.target = _constructor;
-    let newObj = Object.create(_constructor.prototype);
-    let argsArr = [].slice.call(arguments,1);
-    let result = _constructor.apply(newObj, argsArr);
-    if(typeof result === 'object'){
-        return result;
+function New(fn) {
+    let res = {};
+    if (fn.prototype != null) {
+        res.__proto__ = fn.prototype;
     }
-    return newObj;
- }
+    let ret = fn.apply(res, Array.prototype.slice.call(arguments, 1));
+    if ((typeof ret === 'object' || typeof ret === 'function') && ret !== null) {
+        return ret;
+    }
+    return res
+}
 
 

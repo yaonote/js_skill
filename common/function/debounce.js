@@ -10,18 +10,18 @@
  * 
  */
 
-const debounce = (fn,delay) => {
+const debounce = (fn, delay) => {
     let timer = null;
     return (...args) => {
         clearTimeout(timer);
         timer = setTimeout(() => {
-            fn.apply(null,args)
-        },delay)
+            fn.apply(null, args)
+        }, delay)
     }
 }
-const fn = () => {
-    console.log('test')
+const fn = (...arg) => {
+    console.log(arg)
 }
-const delay = debounce(fn,1000)
-delay();
-delay();
+const delay = debounce(fn, 1000)
+delay(1, 2, 3);
+delay('aa', 'bb');

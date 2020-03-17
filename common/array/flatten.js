@@ -12,4 +12,4 @@ Array.prototype.myFlat = function() {
     return res;
 }
 const res = [1,[1,2],[1,2,3,[4]]].myFlat();
-console.log('yao-coding res =>',res)
+console.log(' res =>',res)

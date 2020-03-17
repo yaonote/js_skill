@@ -17,4 +17,4 @@ const res = [1,2,3,4].myReduce((acc,curr,index,origin) => {
     }
 },{})
 
-console.log('yao-coding res =>',res)
+console.log(' res =>',res)

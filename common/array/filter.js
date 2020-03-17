@@ -11,4 +11,4 @@ Array.prototype.myFilter = function(cb) {
 const res = [1,2,3,4].myFilter((item,index,origin) => {
     return item>2
 })
-console.log('yao-coding res =>',res)
+console.log(' res =>',res)

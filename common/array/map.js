@@ -8,4 +8,4 @@ Array.prototype.myMap = function(cb) {
 const result = [1,2,3].myMap((item,index,origin) => {
     return item+index
 })
-console.log('yao-coding  result=>',result)
+console.log('  result=>',result)
