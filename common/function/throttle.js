@@ -11,14 +11,31 @@
 const throttle = (fn, delay = 500) => {
     let flag = true;
     return (...args) => {
-        if(!flag) return ;
+        if (!flag) return;
         flag = false;
-        setTimeout(_ => {
-            fn.apply(null,args)
+        setTimeout(() => {
+            fn.apply(null, args)
             flag = true;
-        },delay)
-    } 
+        }, delay)
+    }
 }
+
+const throttle = (fn, delay = 500) => {
+    let flag = true;
+    return (...args) => {
+        if (!flag) return;
+        setTimeout(() => {
+            fn.apply(null, args);
+            flag = true;
+        }, delay);
+    }
+}
+
+
+
+
+
+
 const foo = () => console.log('run foo');
 const throttleDelay = throttle(foo);
 

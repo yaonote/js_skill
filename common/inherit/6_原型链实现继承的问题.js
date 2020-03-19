@@ -21,7 +21,7 @@ Person.job = function () {
     console.log('这里的this是Person,这是一个静态方法')
 }
 
-function ObjInherit(name,age) {
+function ObjInherit() {
 
 }
 

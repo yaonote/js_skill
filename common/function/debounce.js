@@ -19,6 +19,19 @@ const debounce = (fn, delay) => {
         }, delay)
     }
 }
+
+const debounce = (fn, delay) =>{
+    let timer = null;
+    return (...args) => {
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+            fn.apply(null, args);
+        }, delay);
+    }
+}
+
+
+
 const fn = (...arg) => {
     console.log(arg)
 }

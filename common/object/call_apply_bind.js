@@ -7,6 +7,14 @@ Function.prototype.call = function (content = window) {
     return result;
 }
 
+Function.prototype.call = function( content = window) {
+    content.fn = this;
+    let args = [...arguments].slice(1);
+    let result = content.fn(...args);
+    delete content.fn;
+    return result;
+}
+
 
 
 

@@ -1,29 +1,17 @@
 /**
  * 插入排序
- * @param {*} arr 
- * @param {*} length 
+ * 第一个元素默认是已排序元素，取出下一个元素和当前元素比较，
+ * 如果当前元素大就交换位置。那么此时第一个元素就是当前的最小数，
+ * 所以下次取出操作从第三个元素开始，向前对比，重复之前的操作。
  */
-function insert(arr, length) {
-    let key = arr[length];
-    let i = length;
-    /**
-     * 只要数组的倒数第二个值大于最后一个值
-     * 两者交换位置
-     */
-    while (arr[i - 1] > key) {
-        arr[i] = arr[i - 1];
-        i--;
-        if (i == 0) {
-            break;
-        }
-    }
-    arr[i] = key;
-}
 
 function insertionSort(arr) {
-    let _length = arr.length;
-    for (let i = 1; i < _length; i++) {
-        insert(arr, i);
+    for (let i = 1; i < arr.length; i++) {
+        for (let j = i - 1; j >= 0; j--) {
+            if (arr[j] > arr[j + 1]) {
+                [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]
+            }
+        }
     }
     return arr;
 }

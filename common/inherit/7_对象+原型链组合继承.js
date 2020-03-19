@@ -30,3 +30,4 @@ let o = new ObjInherit('lujx', 26);
 
 console.log(o.name); //lujx
 o.sayHi(); //lujx你好
+o.working()

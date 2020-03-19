@@ -5,3 +5,5 @@ function type(obj) {
     if (obj == null) return String(obj)
     return typeof obj === 'object' ? class2type[Object.prototype.toString.call(obj)] || 'object' : typeof obj
 }
+
+console.log(Object.prototype.toString.call([]))

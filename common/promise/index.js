@@ -1,5 +1,4 @@
 function Promise(constructor) {
-    console.log(constructor)
     let self = this;
     self.status = 'pending';
     self.value = undefined;
@@ -38,7 +37,7 @@ Promise.prototype.then = function (onFullfilled, onRejected) {
 }
 
 var p = new Promise((resolve, reject) => {
-    resolve(2)
+    reject("error")
 })
 p.then(res => {
     console.log(res)
