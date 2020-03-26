@@ -53,24 +53,65 @@
 // foo.init()
 
 
-const omit = (obj,key) => Object.keys(obj).reduce((acc, curr) => curr === key ? acc : {...acc, [curr]: obj[curr]}, {})
+// const omit = (obj,key) => Object.keys(obj).reduce((acc, curr) => curr === key ? acc : {...acc, [curr]: obj[curr]}, {})
 
-const obj = {
-    a: ';',
-    b: 'ss',
-    c: [{
-        "aaa":'aaa'
-    }]
-}
-const res = omit(obj,'a')
+// const obj = {
+//     a: ';',
+//     b: 'ss',
+//     c: [{
+//         "aaa":'aaa'
+//     }]
+// }
+// const res = omit(obj,'a')
 
-console.log('res -> ',res)
+// console.log('res -> ',res)
 
-let str = '';
+// let str = '';
 
-const test = 'PENFING';
+// const test = 'PENFING';
 
 /**
  * 
  * 
  */
+
+
+
+const numberMap = {
+    '零': 0,
+    '一': 1,
+    '二': 2,
+    '三': 3,
+    '四': 4,
+    '五': 5,
+    '六': 6,
+    '七': 7,
+    '八': 8,
+    '九': 9,
+}
+const unitMap = {
+    '十': 10,
+    '百': 100,
+    '千': 1000
+}
+const quotMap = {
+    '万': 10000,
+    '亿': 100000000
+}
+function toChangeChNumber(chNum) {
+    let result = 0;
+    const arr = chNum.split('');
+    for(let i = arr.length-1; i > 0; i--){
+        if(numberMap[arr[i]]){
+            result += numberMap[arr[i]]
+        }else if(unitMap[arr[i]]){
+            result += unitMap[arr[i]]*numberMap[arr[i-1]]
+            i--;
+        }
+    }
+    return result
+}
+const chNum = "八千万八千四百三十七";
+const [quot,unit] = chNum.split('万');
+const res = toChangeChNumber(quot)*10000+toChangeChNumber(unit)
+console.log('res =>',res)

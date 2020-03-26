@@ -41,6 +41,6 @@ class Lazy {
 
 const lazy = new Lazy('测试')
 
-lazy.eat('香蕉').sleep(1000)
+lazy.sleep(1000).sleep(4000)
 
-lazy.eat('hah').sleep(500).eat('hahq')
+// lazy.eat('hah').sleep(500).eat('hahq')

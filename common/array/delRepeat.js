@@ -87,8 +87,7 @@ function unique4(arr) {
 function unique(arr) {
     // 保留true的过滤false的项
     return arr.filter((item,index) => {
-        let flag = arr.indexOf(item) === index
-        return flag
+        return arr.indexOf(item) === index
     })
 }
 

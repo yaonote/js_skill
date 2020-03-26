@@ -7,11 +7,4 @@ Object.prototype.myCreate = function(proto) {
     F.prototype = proto;
     F.prototype.constructor = F;
     return new F();
- }
-
-
-function object(proto) {
-    function F(){};
-    F.prototype = proto;
-    return new F();
 }
