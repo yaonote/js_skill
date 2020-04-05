@@ -1,4 +1,4 @@
-function debounce(fn, delay) {
+function debounce(fn, delay){
     let timer = null;
     return (...args) => {
         clearTimeout(timer);
@@ -11,7 +11,7 @@ function debounce(fn, delay) {
 function throttle(fn, delay) {
     let flag = true;
     return (...args) => {
-        if (!flag) return;
+        if(!flag) return;
         flag = false;
         setTimeout(() => {
             fn.apply(null, args);
@@ -21,25 +21,25 @@ function throttle(fn, delay) {
 }
 
 function _New(fn, ...args) {
-    let res = {};
-    if (fn.prototype) {
+    const res = {};
+    if(fn.prototype) {
         res.__proto__ = fn.prototype;
     }
-    let ret = fn.apply(res, args);
+    const ret = fn.apply(res, args);
     return ret instanceof Object ? ret : res;
 }
 
 function _instanceof(left, right) {
     let prototype = right.prototype;
     left = left.__proto__;
-    while (1) {
-        if (left === prototype) return true;
-        if (left === null) return false;
+    while(1) {
+        if(left === prototype) return true;
+        if(left === null) return false;
         left = left.__proto__;
     }
 }
 
-Function.prototype.call = (context = window, ...args) => {
+Function.prototype.call = (context = window, ...args) =>{
     context.fn = this;
     const res = context.fn(...args);
     delete context.fn;
@@ -48,31 +48,19 @@ Function.prototype.call = (context = window, ...args) => {
 
 Function.prototype.apply = (context = window, args) => {
     context.fn = this;
-    const res = context.fn(...args);
+    const res = args ? context.fn(...args) : context.fn();
     delete context.fn;
     return res;
 }
 
-Function.prototype.bind = (context = window, ...args) => {
+Function.prototype.bind = (context = window, ...args) =>{
     const that = this;
-    const resultFn = (...innerArgs) => {
-        if (this instanceof resultFn) {
+    const reusltFn =(...innerArgs) =>{
+        if(this instanceof reusltFn) {
             return that.apply(this, args.concat(innerArgs));
         } else {
-            return that.apply(context, args.concat(innerArgs))
+            return that.apply(context, args.concat(innerArgs));
         }
     }
-    return resultFn;
-}
-
-Function.prototype.bind = (context = window, ...args) => {
-    const that = this;
-    const resultFn = (...innerArgs) => {
-        if (this instanceof resultFn) {
-            return that.apply(this, args.concat(innerArgs));
-        } else {
-            return that.apply(context, args.concat(innerArgs))
-        }
-    }
-    return resultFn;
+    return reusltFn;
 }

@@ -39,7 +39,6 @@ function _instanceof(left, right) {
     }
 }
 
-
 Function.prototype.call = (context = window, ...args) => {
     context.fn = this;
     const res = context.fn(...args);
@@ -49,7 +48,7 @@ Function.prototype.call = (context = window, ...args) => {
 
 Function.prototype.apply = (context = window, args) => {
     context.fn = this;
-    const res = args ? context.fn(args) : context.fn();
+    const res = args ? context.fn(...args) : context.fn();
     delete context.fn;
     return res;
 }
@@ -76,4 +75,73 @@ function deepClone(obj) {
         }
     })
     return res
+}
+
+
+Promise.all = function (promises) {
+    let result = [];
+    let i = 0;
+    function handleData(index, data) {
+        result[index] = data;
+        i++;
+        if (i === promises.length) {
+            resolve(result)
+        }
+    }
+    return new Promise((resolve, reject) => {
+        for (let i = 0; i < promises.length; i++) {
+            promises[i].then((res) => {
+                handleData(i, res)
+            }).catch(reject)
+        }
+    })
+}
+
+
+Array.prototype.myFilter = function (cb) {
+    let res = [];
+    this.forEach(function (item, index) {
+        if (cb.call(this, item, index, this)) {
+            res.push(item)
+        }
+    })
+    return res;
+}
+
+
+const isArray = data => Object.prototype.toString.call(data) === '[object Array]';
+Array.prototype.myFlat = function () {
+    let res = [];
+    for (var i = 0; i < this.length; i++) {
+        if (isArray(this[i])) {
+            res = res.concat(this[i].myFlat())
+        } else {
+            res.push(this[i])
+        }
+    }
+    return res;
+}
+
+
+
+Array.prototype.myMap = function (cb) {
+    var res = [];
+    for (var i = 0; i < this.length; i++) {
+        res[i] = cb.call(this, this[i], i, this);
+    }
+    return res
+}
+
+
+Array.prototype.myReduce = function (cb, init) {
+    let pre = init;
+    let i = 0;
+    if (init === undefined) {
+        pre = this[0];
+        i = 1;
+    }
+    for (i; i < this.length; i++) {
+        pre = cb(pre, this[i], i, this)
+    }
+    return pre;
 }

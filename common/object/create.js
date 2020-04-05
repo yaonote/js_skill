@@ -1,6 +1,5 @@
-Object.prototype.myCreate = function(proto) {
+ Object.prototype.create = function(ptoto) {
     function F() {};
-    F.prototype = proto;
-    F.prototype.constructor = F;
+    F.prototype  = proto;
     return new F();
  }

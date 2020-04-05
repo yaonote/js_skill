@@ -7,12 +7,12 @@
  * 
  */
 
-function New(fn) {
+function New(fn, ...args) {
     let res = {};
-    if (fn.prototype != null) {
+    if (fn.prototype) {
         res.__proto__ = fn.prototype;
     }
-    let ret = fn.apply(res, Array.prototype.slice.call(arguments, 1));
+    const ret = fn.apply(res, args);
     return ret instanceof Object ? ret : res
 }
 

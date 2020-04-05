@@ -16,4 +16,5 @@ function insertionSort(arr) {
     return arr;
 }
 
+
 console.log(insertionSort([2, 6, 3, 5, 0, 4]))

@@ -1,62 +1,32 @@
 // call
-Function.prototype.call = function (content = window) {
-    content.fn = this;
-    let args = [...arguments].slice(1);
-    let result = content.fn(...args);
-    delete content.fn;
+Function.prototype.call = function (context = window, ...args) {
+    context.fn = this;
+    let result = context.fn(...args);
+    delete context.fn;
     return result;
 }
-
-Function.prototype.call = function( content = window) {
-    content.fn = this;
-    let args = [...arguments].slice(1);
-    let result = content.fn(...args);
-    delete content.fn;
-    return result;
-}
-
 
 
 
 //apply
-Function.prototype.apply = function (content = window) {
-    content.fn = this;
-    let result;
-    if (arguments[1]) {
-        result = content.fn(arguments[1]);
-    } else {
-        result = content.fn()
-    }
-    delete content.fn;
+Function.prototype.apply = function (context = window, args) {
+    context.fn = this;
+    const result = args ? context.fn(args) : context.fn();
+    delete context.fn;
     return result;
 }
-
-Function.prototype.apply = function (content = window) {
-    content.fn = this;
-    let result;
-    if (arguments[1]) {
-        result = content.fn(arguments[1]);
-    } else {
-        result = content.fn();
-    }
-    delete content.fn;
-    return result;
-}
-
-
-
-
 
 
 
 //bind
-Function.prototype.bind = function (content = window, ...args) {
-    let fn = this;
-    let resultFn = function () {
-        // this instanceof resultFn 构造函数的情况 new fn.bind(obj)
-        let _content = this instanceof resultFn ? this : content;
-        return fn.apply(_content, args);
+Function.prototype.bind = function (context = window, ...args) {
+    const that = this;
+    const reusltFn = (...innerArgs) => {
+        if (this instanceof resultFn) {
+            return that.apply(this, args.concat(innerArgs));
+        } else {
+            return that.apply(context, args.concat(innerArgs));
+        }
     }
-    resultFn.prototype = Object.create(this.prototype); // 保证原函数原型对象上的属性不丢
-    return resultFn;
+    return reusltFn;
 }
