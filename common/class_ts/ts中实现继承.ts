@@ -16,7 +16,7 @@ class Person {
 
 class MyInherit extends Person {
     constructor(name:string){
-        super(name); // 初始化父类的构造函数
+        super(); // 初始化父类的构造函数
     }
 }
 

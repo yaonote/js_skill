@@ -20,19 +20,6 @@ const throttle = (fn, delay = 500) => {
     }
 }
 
-const throttle = (fn, delay = 500) => {
-    let flag = true;
-    return (...args) => {
-        if (!flag) return;
-        setTimeout(() => {
-            fn.apply(null, args);
-            flag = true;
-        }, delay);
-    }
-}
-
-
-
 
 
 
