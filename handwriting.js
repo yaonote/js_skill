@@ -68,7 +68,7 @@ Function.prototype.bind = (context = window, ...args) => {
 function deepClone(obj) {
     let res = {};
     Object.keys(obj).forEach(key => {
-        if (typeof obj[key]) {
+        if (typeof obj[key] === 'object') {
             res[key] = deepClone(obj[key])
         } else {
             res[key] = obj[key]
@@ -80,18 +80,15 @@ function deepClone(obj) {
 
 Promise.all = function (promises) {
     let result = [];
-    let i = 0;
-    function handleData(index, data) {
-        result[index] = data;
-        i++;
-        if (i === promises.length) {
-            resolve(result)
-        }
-    }
+    let count = 0;
     return new Promise((resolve, reject) => {
         for (let i = 0; i < promises.length; i++) {
-            promises[i].then((res) => {
-                handleData(i, res)
+            promises[i].then(res => {
+                result[i] = res;
+                count++;
+                if (count == promises.length) {
+                    resolve(result);
+                }
             }).catch(reject)
         }
     })

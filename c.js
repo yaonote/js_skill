@@ -1,17 +1,9 @@
-/**
- * 简单方式：JSON.parse(JSON.stringify(obj))
- */
-
-/**
- * 递归的方式
- */
-
-
 function deepClone(data) {
+    // let res = null;
     if (data instanceof Array) {
         const res = [];
-        data.forEach(el => {
-            res.push(deepClone(el));
+        data.forEach((el, i) => {
+            res.push(deepClone(el))
         })
         return res
     } else if (data instanceof Object) {
@@ -19,9 +11,9 @@ function deepClone(data) {
         for (let key in data) {
             res[key] = deepClone(data[key]);
         }
-        return res
+        return res;
     } else {
-        return data;
+        return data
     }
 }
 const obj = {
@@ -64,21 +56,6 @@ let tree = [{
     id: 3,
     name: "name_3"
 }]
-
-function getChildren(data) {
-    return (function inner(data, res = []) {
-        data.forEach((el, i) => {
-            res.push({
-                id: el.id,
-                name: el.name
-            })
-            el.children && res.concat(inner(el.children, res))
-        })
-        return res
-    })(data)
-}
-// console.log(JSON.stringify(deepClone(tree)))
-// console.log("~~~~~~~~~~~~~")
-// console.log(JSON.stringify(deepClone(obj)))
-
-console.log(getChildren(tree))
+console.log(JSON.stringify(deepClone(tree)))
+console.log("~~~~~~~~~~~~~")
+console.log(JSON.stringify(deepClone(obj)))
