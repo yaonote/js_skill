@@ -11,15 +11,15 @@ function deepClone(data) {
     if (data instanceof Array) {
         const res = [];
         data.forEach(el => {
-            res.push(deepClone(el));
+            res.push(deepClone(el))
         })
-        return res
+        return res;
     } else if (data instanceof Object) {
         const res = {};
         for (let key in data) {
             res[key] = deepClone(data[key]);
         }
-        return res
+        return res;
     } else {
         return data;
     }
@@ -77,8 +77,7 @@ function getChildren(data) {
         return res
     })(data)
 }
-// console.log(JSON.stringify(deepClone(tree)))
-// console.log("~~~~~~~~~~~~~")
-// console.log(JSON.stringify(deepClone(obj)))
+console.log(JSON.stringify(deepClone(tree)))
+console.log(JSON.stringify(deepClone(obj)))
 
 console.log(getChildren(tree))

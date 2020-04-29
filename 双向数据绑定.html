@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>双向数据绑定</title>
+</head>
+
+<body>
+    <input type="text" id="input">
+    <div id="test"></div>
+</body>
+<script>
+    function observe(obj, key) {
+        Object.defineProperty(obj, key, {
+            get: function () {
+
+            },
+            set: function (val) {
+                document.getElementById('test').innerText = val;
+            }
+        })
+    }
+    document.getElementById('input').addEventListener('input',function(e){
+        obj.val = e.target.value;
+    },false)
+    const obj = {
+        val: "lujx"
+    }
+    observe(obj, "val");
+</script>
+
+</html>
