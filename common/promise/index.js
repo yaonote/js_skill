@@ -13,7 +13,7 @@ function MyPromise(fn) {
         if (that.state === PENDING) {
             that.state = RESOLVED;
             that.value = value;
-            that.resolveCallbacks.map(cb => cb(that.value))
+            that.resolveCallbacks.map((cb) => cb(that.value));
         }
     }
 
@@ -21,20 +21,25 @@ function MyPromise(fn) {
         if (that.state === PENDING) {
             that.state = REJECTED;
             that.value = value;
-            that.rejectCallbacks.map(cb => cb(that.value))
+            that.rejectCallbacks.map((cb) => cb(that.value));
         }
     }
 
     try {
-        fn(resolve, reject)
+        fn(resolve, reject);
     } catch (e) {
-        reject(e)
+        reject(e);
     }
 }
 MyPromise.prototype.then = function (onFulfilled, onRejected) {
     const that = this;
-    onFulfilled = typeof onFulfilled === 'function' ? onFulfilled : v => v;
-    onRejected = typeof onRejected === 'function' ? onRejected : r => { throw r }
+    onFulfilled = typeof onFulfilled === 'function' ? onFulfilled : (v) => v;
+    onRejected =
+        typeof onRejected === 'function'
+            ? onRejected
+            : (r) => {
+                  throw r;
+              };
 
     if (that.state === PENDING) {
         that.resolveCallbacks.push(onFulfilled);
@@ -42,17 +47,17 @@ MyPromise.prototype.then = function (onFulfilled, onRejected) {
     }
 
     if (that.state === RESOLVED) {
-        onFulfilled(that.value)
+        onFulfilled(that.value);
     }
     if (that.state === REJECTED) {
-        onRejected(that.value)
+        onRejected(that.value);
     }
-}
+};
 
 new MyPromise((resolve, reject) => {
     setTimeout(() => {
-      resolve(1)
-    }, 0)
-  }).then(value => {
-    console.log(value)
-  })
+        resolve(1);
+    }, 0);
+}).then((value) => {
+    console.log(value);
+});

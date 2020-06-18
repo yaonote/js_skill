@@ -1,3 +1,7 @@
+/**
+ * 构造函数继承只能继承父类的属性方法，不能继承原型上的属性方法
+ */
+
 function Parent(name) {
     this.name = name;
     this.color = ['red','black']

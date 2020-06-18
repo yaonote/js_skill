@@ -15,7 +15,7 @@ function throttle(fn, delay) {
         flag = false;
         setTimeout(() => {
             fn.apply(null, args);
-            flag = false;
+            flag = true;
         }, delay);
     }
 }
@@ -65,16 +65,22 @@ Function.prototype.bind = (context = window, ...args) => {
     return resultFn;
 }
 
-function deepClone(obj) {
-    let res = {};
-    Object.keys(obj).forEach(key => {
-        if (typeof obj[key] === 'object') {
-            res[key] = deepClone(obj[key])
-        } else {
-            res[key] = obj[key]
+function deepClone(data) {
+    if(data instanceof Array){
+        const res = [];
+        data.forEach(el=>[
+            res.push(deepClone(el))
+        ])
+        return res;
+    } else if(data instanceof Object){
+        const res = {};
+        for (let key in data){
+            res[key] = deepClone(data[key])
         }
-    })
-    return res
+        return res;
+    } else {
+        return data;
+    }
 }
 
 
